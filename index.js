@@ -8,6 +8,7 @@ import {registerValidation, loginValidation, postCreateValidation} from './valid
 import {handleValidationsErrors, checkAuth} from './utils/index.js';
 import {UserController, PostController} from './controllers/index.js';
 
+require('dotenv').config();
 mongoose
     .connect(process.env.MONGODB_URI)
     .then(() => console.log('BD ok'))
