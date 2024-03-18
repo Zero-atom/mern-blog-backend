@@ -1,4 +1,5 @@
-import express from 'express';
+import express from 'express'
+import fs from "fs"
 import mongoose from 'mongoose';
 import multer from 'multer';
 import cors from 'cors'
@@ -20,6 +21,9 @@ const app=express(); //создание express  приложениея (дал�
 
 const storage = multer.diskStorage({//созание хранилища
     destination: (_, __, cb) => {
+        if (!fs.existsSync('uploads')) {
+            fs.mkdirSync('uploads');
+        }
         cb(null, 'uploads');// не получвет никаких ошибок и сохрнаить все файлы в папку uploads
     },
     filename: (_, file, cb) => {
